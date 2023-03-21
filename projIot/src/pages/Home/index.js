@@ -1,96 +1,109 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, TouchableOpacityBase, } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, TextInput, TouchableOpacity, Image, TouchableOpacityBase, ScrollView } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import { LinearGradient } from 'expo-linear-gradient';
 import { AntDesign, Ionicons, Entypo, EvilIcons, FontAwesome } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
+const { width, heigth } = Dimensions.get('screen');
 
 export default function Home() {
     return (
         <View style={styles.container}>
 
-            <LinearGradient colors={['#00D1C0', '#28DA91']} start={{ x: 0, y: 0 }} style={styles.headerColor}>
+            <ScrollView>
+                <LinearGradient colors={['#00D1C0', '#28DA91']} start={{ x: 0, y: 0 }} style={styles.headerColor}>
 
-                <Animatable.View animation="fadeIn" delay={100} >
-                    <View style={styles.headeraline}>
-                        <TouchableOpacity >
-                            <Entypo name="menu" size={40} color="#fff" style={styles.icone} />
-                        </TouchableOpacity>
+                    <Animatable.View animation="fadeIn" delay={100} style={styles.animationView}>
+                        <View style={styles.headeraline}>
 
-                        <Image source={require('../../assents/image.png')}
-                            style={styles.logo} resizeMode="contain" />
-                    </View>
-                    <Animatable.View animation="fadeIn" delay={100} style={styles.headerUser}>
-                        <View style={styles.textUser}>
-                            <Text style={styles.textfont1}>Olá,</Text>
-                            <Text style={styles.textfont2}>Jhon Doe</Text>
+                            <TouchableOpacity >
+                                <Entypo name="menu" size={40} color="#fff" style={styles.icone} />
+                            </TouchableOpacity>
+
+                            <Image source={require('../../assents/image.png')} style={styles.logo} resizeMode="contain" />
+
                         </View>
-                        <View>
-                            <FontAwesome name="user-circle-o" size={40} color="#fff" />
-                        </View>
+
+                        <Animatable.View animation="fadeIn" delay={100} style={styles.headerUser}>
+                            <View style={styles.textUserContainer}>
+                                <Text style={styles.textfont1}>Olá,</Text>
+                                <Text style={styles.textfont2}>Jhon Doe</Text>
+                            </View>
+                            <View>
+                                <FontAwesome name="user-circle-o" size={40} color="#fff" style={{ paddingEnd: '13%' }} />
+                            </View>
+                        </Animatable.View>
                     </Animatable.View>
-                </Animatable.View>
-            </LinearGradient>
-
-            <View style={styles.carrocel}>
-                <Image source={require('../../assents/imgLider.png')} style={styles.imgCarrocel} />
-                <View style={styles.textCarrocel}>
-                    <Text style={styles.styText1}>VOCÊ É LÍDER  </Text>
-                    <Text style={styles.styText2}>NESSA CAUSA</Text>
-                </View>
-                <View style={styles.containerCarrocel}>
-                    <TouchableOpacity style={styles.icoCarroc}>
-                        <Entypo name="circle" size={12} color="#fff" style={{ marginHorizontal: 5 }} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.icoCarroc}>
-                        <Entypo name="circle" size={12} color="#fff" style={{ marginHorizontal: 5 }} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.icoCarroc}>
-                        <Entypo name="circle" size={12} color="#fff" style={{ marginHorizontal: 5 }} />
-                    </TouchableOpacity>
-                </View>
-            </View>
-            <View style={styles.walletView}>
-                <View style={styles.walletTitle}>
-                    <Image source={require('../../assents/walletIcon.png')} style={{ height: 40 }} resizeMode="contain" />
-                    <Text style={{ fontWeight: 'bold', fontSize: 20 }}>Digital Wallet</Text>
-                </View>
-                <View style={styles.walletContent}>
-                    <View style={styles.walletSaldo}>
-                        <Text>Saldo</Text>
-                        <Text style={{ fontWeight: 'bold', fontSize: 20 }}>R$ 20,00</Text>
-                    </View>
-                    <TouchableOpacity style={styles.walletButton}>
-                        <LinearGradient colors={['#00D1C0', '#28DA91']} start={{ x: 0, y: 0 }} style={styles.walletColorButton}>
-                            <Text style={styles.walletTextButton}>RESGATAR</Text>
-                        </LinearGradient>
-                    </TouchableOpacity>
-                </View>
-            </View>
-            <View style={styles.toolsEx}>
-                <Text>Iot</Text>
-            </View>
-
-            <View style={styles.toolsFooter}>
-                <LinearGradient colors={['#00D1C0', '#28DA91']} start={{ x: 0, y: 0 }} style={styles.footerColor}>
-                    <View style={styles.menuFooter}>
-                        <TouchableOpacity>
-                            <Text style={styles.iconFooter}>Reciclagem</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity>
-                            <Text style={styles.iconFooter}>QR code</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity>
-                            <Text style={styles.iconFooter}>Grafico</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity>
-                            <Text style={styles.iconFooter}>Ajuda</Text>
-                        </TouchableOpacity>
-                    </View>
                 </LinearGradient>
-            </View >
 
+                <View style={styles.carrocelContainer}>
+                    <Image source={require('../../assents/imgLider.png')} resizeMode='stretch'
+                        style={{ width: width / 1, height: width / 2, }} />
+                </View>
+
+                <View style={styles.walletContaier}>
+                    <View style={styles.walletTitleContainer}>
+                        <Image source={require('../../assents/walletIcon.png')} style={styles.walletIcon} />
+                        <Text style={styles.walletTitle}>Digital Wallet</Text>
+                    </View>
+
+                    <Text style={{ paddingStart: '10%', paddingTop: '2%', fontSize: 15 }}>Saldo</Text>
+
+                    <View style={styles.walletResgate}>
+                        <Text style={{ fontSize: 20, fontWeight: 'bold', marginStart: '10%', paddingTop: 6 }}>R$ 20.00</Text>
+                        <TouchableOpacity style={{ paddingEnd: 20 }}>
+                            <LinearGradient
+                                colors={['#00D1C0', '#28DA91']}
+                                start={{ x: 0, y: 0 }} style={styles.buttonText}>
+                                <Text style={{ marginHorizontal: '8%', marginVertical: '4%', fontSize: 20, color: '#fff' }}>Resgatar</Text>
+                            </LinearGradient>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+
+                <View style={styles.toolsContainer}>
+                    <TouchableOpacity style={styles.toolsIcons}>
+                        <View style={{ backgroundColor: '#dadada', padding: '5%', borderRadius: 50, alignItems: 'center', margin: '6%' }}>
+                            <Image source={require('../../assents/LixeiraIot.png')} style={styles.imgToolsIcons} />
+                        </View>
+                        <Text style={{ paddingHorizontal: '5%', fontWeight: 'bold', }}>Lixeira IOT</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={styles.toolsIcons}>
+                        <View style={{ backgroundColor: '#dadada', padding: 10, borderRadius: 80, alignItems: 'center', margin: '6%' }}>
+                            <Image source={require('../../assents/oculosVr.png')} style={{ width: '100%' }} resizeMode='contain' />
+                        </View>
+
+                        <Text style={{ paddingHorizontal: '10%', paddingTop: '3%', fontWeight: 'bold', fontSize: 16 }}>VR</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={styles.toolsIcons}>
+                        <View style={{ backgroundColor: '#dadada', padding: 10, borderRadius: 50, alignItems: 'center', margin: '6%' }}>
+                            <Image source={require('../../assents/gps.png')} style={styles.imgToolsIcons} />
+                        </View>
+                        <Text style={{ paddingHorizontal: '6%', fontWeight: 'bold' }}>VR maps</Text>
+                    </TouchableOpacity>
+                </View>
+                
+                <View style={styles.footerContainer}>
+                    <LinearGradient colors={['#00D1C0', '#28DA91']} start={{ x: 0, y: 0 }} style={styles.footerIcons}>
+                        <TouchableOpacity style={styles.touchFooter}>
+                            <Image source={require('../../assents/icon_recicle.png')} style={{}}/>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.touchFooter}>
+                            <Image source={require('../../assents/icon_Qr.png')} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.touchFooter}>
+                            <Image source={require('../../assents/icon_grafico.png')} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.touchFooter}>
+                            <Image source={require('../../assents/icon_ajuda.png')} />
+                        </TouchableOpacity>
+                    </LinearGradient>
+                </View>
+
+            </ScrollView>
 
 
         </View >
@@ -103,36 +116,31 @@ const styles = StyleSheet.create({
         backgroundColor: '#DADADA',
     },
     headerColor: {
-        height: '20%',
-
-
+        width: width / 1, height: width / 2.9,
     },
-    headeraline: {
-        alignItems: 'center',
+    AanimationView: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
-        paddingStart: 16,
-        paddingEnd: 16,
-        marginTop: 26
-    },
-    icone: {
-
     },
     logo: {
-        height: 50,
-        width: '50%',
-        marginEnd: '24%'
+        width: width / 1.9, height: width / 6,
+        marginEnd: '20%',
+        marginTop: 8,
     },
-    headerUser: {
-        alignItems: 'center',
+    icone: {
+        paddingStart: 20,
+        paddingTop: 25
+    },
+    headeraline: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        paddingStart: 30,
-        paddingEnd: 25,
-        marginTop: 40
+        paddingBottom: 10,
     },
-    textUser: {
-        paddingStart: 16
+    headerUser: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    textUserContainer: {
+        paddingStart: 30
     },
     textfont1: {
         color: '#fff',
@@ -140,100 +148,78 @@ const styles = StyleSheet.create({
     },
     textfont2: {
         color: '#fff',
+        fontSize: 20,
+        fontWeight: 'bold'
+    },
+    carrocelContainer: {
+        backgroundColor: '#fff',
+        width: width / 1, height: width / 2,
+        marginBottom: '2%'
+    },
+    walletContaier: {
+        backgroundColor: '#fff',
+        borderRadius: 20,
+        marginHorizontal: '5%',
+        //width: '90%',
+        height: '20%'
+    },
+
+    walletTitleContainer: {
+        width: '100%', height: '50%',
+        flexDirection: 'row',
+        paddingTop: 20
+    },
+    walletIcon: {
+        width: width / 10, height: width / 10,
+        marginEnd: '5%',
+        marginStart: '10%'
+    },
+    walletTitle: {
         fontSize: 18,
         fontWeight: 'bold'
     },
-    carrocel: {
-        alignItems: 'center',
-        backgroundColor: '#879da8',
-        height: '25%',
-    },
-    imgCarrocel: {
-        width: '100%',
-        height: '100%',
-
-    },
-    textCarrocel: {
-        color: '#fff',
-        position: 'absolute',
-        paddingTop: 70,
-        paddingStart: 90,
-        width: '100%'
-
-    },
-    styText1: {
-        color: '#fff',
-        fontSize: 35,
-        fontWeight: 'bold'
-    },
-    styText2: {
-        color: '#fff',
-        fontSize: 23,
-        paddingStart: 80,
-        fontWeight: 'bold'
-    },
-    containerCarrocel: {
-        position: 'absolute',
-        flexDirection: 'row',
-        paddingTop: '70%',
-    },
-    icoCarroc: {
-        marginHorizontal: 5,
-        paddingTop: '110%'
-    },
-    walletView: {
-        backgroundColor: '#fff',
-        marginTop: 16,
-        borderRadius: 10,
-        marginHorizontal: 16,
-        padding: 20,
-        height: '15%'
-    },
-    walletTitle: {
-        flexDirection: 'row',
-        paddingBottom: 16
-    },
-    walletContent: {
+    walletResgate: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        paddingHorizontal: 10
+        marginBottom: '4%'
     },
-    walletColorButton: {
-        borderRadius: 20,
+    buttonText: {
+        borderRadius: 15,
+        alignItems: 'center',
     },
-    walletTextButton: {
-        margin: 10,
-        color: '#fff',
-        fontWeight: 'bold',
-        fontSize: 20,
-        paddingHorizontal: 20
-    },
-    toolsEx: {
-        backgroundColor: '#fff',
-        marginTop: 16,
-        borderRadius: 10,
-        marginHorizontal: 16,
-        padding: 20,
-        height: '20%'
-    },
-    toolsFooter: {
-        paddingTop: '5%',
+    toolsContainer: {
 
-    },
-    footerColor: {
-        height: '100%',
-        borderRadius: 50,
-    },
-    menuFooter: {
-        paddingTop: 50,
+        marginTop: 10,
         flexDirection: 'row',
-        justifyContent: 'center',
-    },
-    iconFooter: {
+        justifyContent: 'space-evenly',
+        width: '90%',
+        marginStart: '5%',
 
-        paddingHorizontal: 10,
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: '#fff'
     },
+    toolsIcons: {
+        backgroundColor: '#fff',
+        padding: '2%'
+    },
+    imgToolsIcons: {
+
+        width: '90%',
+    },
+    footerContainer: {
+        flex:1,
+        marginTop: '5%',
+        position:'relative',
+        
+        
+        
+    },
+    footerIcons: {
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        borderTopLeftRadius: 30,
+        borderTopRightRadius: 30,
+        
+    },
+    touchFooter:{
+        
+    }
 })
