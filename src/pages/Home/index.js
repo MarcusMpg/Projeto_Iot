@@ -192,11 +192,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     toolsContainer: {
+        backgroundColor: "#202",
+        flex:1,
         marginTop: 10,
         flexDirection: 'row',
         justifyContent: 'space-evenly',
-        //width: '90%', height: '40%',
-        marginStart: '5%',
+        width: '100%', 
+        //marginStart: '5%',
 
     },
     toolsIcons: {
@@ -205,16 +207,17 @@ const styles = StyleSheet.create({
 
     },
     viewImgTools: {
-        alignItems: 'center',
+       flex:1
 
     },
     imgToolsIcons: {
-        width: '40%',
-        height: '40%',
-        alignItems: 'center',
-
-
+        //backgroundColor: "#202",
+        width: '60%',
+        height: '100%',
+        
+       // alignItems: 'center',
     },
+
     footerContainer: {
         flex: 1,
         marginTop: '5%',

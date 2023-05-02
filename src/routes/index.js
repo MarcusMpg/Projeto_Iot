@@ -1,7 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import Welcome from "../pages/Welcome";
 import SingIn from "../pages/SignIn"
 import Register from "../pages/Register";
 import Home from "../pages/Home";
