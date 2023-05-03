@@ -1,11 +1,13 @@
 export const footerObjects = [
     {
-        name: "HomeTab",
+        
+        name: "Reciclagem",
         route: "../../assets/icon_recicle.png"
     },
     {
         name: "QR Code",
         route: "../../assets/icon_Qr.png"
+        
     },
     {
         name: "Grafico",

@@ -65,45 +65,25 @@ export default function Home() {
                 <View style={styles.toolsContainer}>
                     <TouchableOpacity style={styles.toolsIcons}>
                         <View style={styles.viewImgTools}>
-                            <FontAwesome5 name="trash-alt" size={24} color="black" style={styles.imgToolsIcons} />
+                            <FontAwesome5 name="trash-alt" size={40} color="black" style={styles.imgToolsIcons} />
                         </View>
-                        <Text style={{ paddingHorizontal: '5%', fontWeight: 'bold', }}>Lixeira IOT</Text>
+                        <Text style={{ paddingHorizontal: '5%', fontWeight: 'bold', textAlign: "center" }}>Lixeira IOT</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.toolsIcons}>
                         <View style={styles.viewImgTools}>
-                            <FontAwesome5 name="vr-cardboard" size={24} color="black" style={styles.imgToolsIcons} />
+                            <FontAwesome5 name="vr-cardboard" size={40} color="black" style={styles.imgToolsIcons} />
                         </View>
 
-                        <Text style={{ paddingHorizontal: '10%', paddingTop: '3%', fontWeight: 'bold', fontSize: 16 }}>VR</Text>
+                        <Text style={{ paddingHorizontal: '5%', paddingTop: '3%', fontWeight: 'bold', fontSize: 16, textAlign: "center" }}>VR</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.toolsIcons}>
                         <View style={styles.viewImgTools}>
-                            <EvilIcons name="location" size={24} color="black" style={styles.imgToolsIcons} />
+                            <EvilIcons name="location" size={45} color="black" style={styles.imgToolsIcons} />
                         </View>
-                        <Text style={{ paddingHorizontal: '6%', fontWeight: 'bold' }}>VR maps</Text>
+                        <Text style={{ paddingHorizontal: '6%', fontWeight: 'bold', textAlign: "center" }}>VR maps</Text>
                     </TouchableOpacity>
-                </View>
-
-                <View style={styles.footerContainer}>
-                    <LinearGradient colors={['#00D1C0', '#28DA91']} start={{ x: 0, y: 0 }} style={styles.footerIcons}>
-
-                        <TouchableOpacity style={styles.touchFooter}>
-                            <Image source={require('../../assets/icon_recicle.png')} style={styles.iconesImg} resizeMode='contain' />
-                        </TouchableOpacity>
-
-                        <TouchableOpacity style={styles.touchFooter}>
-                            <Image source={require('../../assets/icon_Qr.png')} style={styles.iconesImg} resizeMode='contain' />
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.touchFooter}>
-                            <Image source={require('../../assets/icon_grafico.png')} style={styles.iconesImg} resizeMode='contain' />
-                        </TouchableOpacity>
-
-                        <TouchableOpacity style={styles.touchFooter}>
-                            <Image source={require('../../assets/icon_ajuda.png')} style={styles.iconesImg} resizeMode='contain' />
-                        </TouchableOpacity>
-                    </LinearGradient>
                 </View>
 
             </ScrollView>
@@ -116,11 +96,12 @@ export default function Home() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        height: '100%',
         backgroundColor: '#DADADA',
     },
     headerColor: {
-        width: width / 1, height: width / 2.9,
+        width: width / 1,
+        height: width / 2.9,
+        flex: 1
     },
     AanimationView: {
         flexDirection: 'row',
@@ -191,33 +172,35 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         alignItems: 'center',
     },
+    //------ Area de Conectividade --------------------------
     toolsContainer: {
-        backgroundColor: "#202",
-        flex:1,
+        flex: 1,
         marginTop: 10,
         flexDirection: 'row',
         justifyContent: 'space-evenly',
-        width: '100%', 
-        //marginStart: '5%',
-
+        width: '100%',
     },
     toolsIcons: {
         borderWidth: 1,
         backgroundColor: '#fff',
-
+        width: 105
     },
     viewImgTools: {
-       flex:1
+        backgroundColor: '#dadada',
+        borderRadius: 80,
+        alignItems: 'center',
+        margin: '6%',
+        borderWidth: 1,
+        height: 65
 
     },
     imgToolsIcons: {
-        //backgroundColor: "#202",
-        width: '60%',
-        height: '100%',
-        
-       // alignItems: 'center',
+        flex: 1,
+        margin: 10
     },
 
+
+    //-----------Roda Pé ------------    
     footerContainer: {
         flex: 1,
         marginTop: '5%',
@@ -242,12 +225,6 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         bottom: 0
     },
-    viewImgTools: {
-        backgroundColor: '#dadada',
-        borderRadius: 80,
-        alignItems: 'center'
-        , margin: '6%',
-        borderWidth: 1
-    }
+
 
 })
