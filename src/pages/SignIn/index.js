@@ -1,13 +1,16 @@
-import React from 'react';
+import React , { useState }from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, } from 'react-native';
 import * as Animatable from 'react-native-animatable'
 import { LinearGradient } from 'expo-linear-gradient';
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign,Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native'
 
 
 export default function SingIn() {
+  const [input, setInput] = useState('');
+    const [hidePass, setHidePass] = useState(true);
   const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <LinearGradient
@@ -15,16 +18,6 @@ export default function SingIn() {
         start={{
           x: 0, y: 0
         }} style={styles.headerColor}>
-
-        <Animatable.View animation="fadeIn" delay={100} >
-
-
-
-          <View style={styles.headeraline}>
-            
-            <Text style={styles.message}>Login</Text>
-          </View>
-        </Animatable.View>
       </LinearGradient>
 
 
@@ -32,22 +25,36 @@ export default function SingIn() {
 
       <Animatable.View animation={'fadeIn'} daley={300} style={styles.containerForm}>
         <View>
-          <Image source={require('../../assets/logo_colorida.png')}
-            style={{ width: '90%', alignSelf: 'center', marginBottom: 25 }} resizeMode="contain"
+          <Image source={require('../../assets/CityLinkColor.png')}
+            style={styles.logoColor} resizeMode="contain"
           />
         </View>
-             <Text style={styles.title}>Nome</Text>
-             <TextInput placeholder='Seu Nome Aqui' style={styles.input} />
-             <Text style={styles.title}>Senha</Text>
-             <TextInput placeholder='Sua Senha' style={styles.input} />
+        <Text style={styles.title}>Nome</Text>
+        <TextInput placeholder='Seu Nome Aqui' style={styles.input} />
 
-        <TouchableOpacity style={styles.button} onPress={()=> navigation.navigate('Home')}>
+
+
+        <Text style={styles.title}>Senha</Text>
+
+        <View style={styles.inputArea} >
+          <TextInput placeholder='********' style={{ paddingBottom: 10, paddingTop: 10, width: '85%' }}
+            value={input} onChangeText={(texto) => setInput(texto)} secureTextEntry={hidePass}
+          />
+          <TouchableOpacity style={styles.eyeSenha} onPress={() => setHidePass(!hidePass)}>
+            {hidePass ? <Ionicons name='eye' color='#dadada' size={25} /> :
+              <Ionicons name='eye-off' color='#dadada' size={25} />
+            }
+          </TouchableOpacity>
+        </View>
+
+
+
+
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Home')}>
           <LinearGradient
             colors={['#00D1C0', '#28DA91']}
             start={{ x: 0, y: 0 }} style={styles.buttonText}>
-
             <Text style={{ color: '#fff', fontSize: 20 }}>Entrar</Text>
-
           </LinearGradient>
         </TouchableOpacity>
 
@@ -70,12 +77,16 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 40,
   },
   headeraline: {
-   // alignItems: 'center',
+    // alignItems: 'center',
     flexDirection: 'row',
     justifyContent: "flex-end",
     marginTop: 30,
-    
-   
+  },
+  logoColor: {
+    width: '90%',
+    alignSelf: 'center',
+    marginBottom: 25,
+    marginTop: "15%"
   },
   message: {
     fontSize: 40,
@@ -90,7 +101,7 @@ const styles = StyleSheet.create({
     paddingStart: 10
   },
   containerForm: {
-    marginTop: -24,
+    marginTop: -45,
     marginStart: 14,
     marginEnd: 14,
     backgroundColor: '#fff',
@@ -103,15 +114,21 @@ const styles = StyleSheet.create({
     margin: 10,
     color: '#28DA91'
   },
-  buttonText: {
-    alignSelf: 'center',
-    marginTop: 50,
-    paddingHorizontal: 90,
-    paddingVertical: 5,
-    borderRadius: 15,
+  button: {
+    marginTop: 15,
+    shadowColor: '#171717',
+    shadowOffset: { width: -2, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+
 
   },
-
+  buttonText: {
+    alignSelf: 'center',
+    paddingHorizontal: 100,
+    paddingVertical: 7,
+    borderRadius: 15,
+  },
   registerText: {
     fontSize: 15,
     paddingTop: 10,
@@ -121,10 +138,17 @@ const styles = StyleSheet.create({
     color: '#28DA91'
   },
   input: {
-    //alignSelf: 'center',
-    margin: 10,
+    marginBottom: 10,
     borderBottomWidth: 1,
-    height: 40,
-    borderColor: '#28DA91'
+    borderBottomColor: '#28DA91',
+    height: 40
+},
+  inputArea: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    borderBottomWidth: 1,
+    borderBottomColor: '#28DA91',
+    paddingHorizontal: 8,
   }
 })

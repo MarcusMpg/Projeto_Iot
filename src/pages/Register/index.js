@@ -20,7 +20,7 @@ export default function Register() {
                             <AntDesign name="leftcircleo" size={34} color="#fff" style={styles.icone} />
                         </TouchableOpacity>
 
-                        <Image source={require('../../assets/image.png')}
+                        <Image source={require('../../assets/CityLINKBranco.png')}
                             style={styles.logo} resizeMode="contain" />
                     </View>
                 </Animatable.View>
@@ -45,7 +45,7 @@ export default function Register() {
 
                 <View style={styles.inputArea}>
 
-                    <TextInput placeholder='********' style={{ paddingBottom: 10, paddingTop: 10, width: '85%' }}
+                    <TextInput placeholder='********' style={{ paddingBottom: 5, paddingTop: 5, width: '85%' }}
                         value={input} onChangeText={(texto) => setInput(texto)} secureTextEntry={hidePass}
                     />
                     <TouchableOpacity style={styles.eyeSenha} onPress={() => setHidePass(!hidePass)}>
@@ -53,7 +53,6 @@ export default function Register() {
                             <Ionicons name='eye-off' color='#dadada' size={25} />
                         }
                     </TouchableOpacity>
-
                 </View>
 
 
@@ -88,6 +87,7 @@ const styles = StyleSheet.create({
         height: '20%',
         borderBottomLeftRadius: 40,
         borderBottomRightRadius: 40,
+       
     },
     headeraline: {
         alignItems: 'center',
@@ -95,15 +95,22 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         paddingStart: 16,
         paddingEnd: 16,
+        
 
     },
     icone: {
-        marginTop: '7%',
-        paddingStart: 10
+        marginTop: '90%',
+
+       paddingTop:10,
+        height:"50%",
+       
     },
     logo: {
-        width: '50%',
-        marginEnd: '24%'
+        width: '65%',
+        marginEnd: '16%',   
+        marginTop: "10%",
+        
+        
     },
     containerForm: {
         backgroundColor: '#fff',

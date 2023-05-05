@@ -1,6 +1,7 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { LinearGradient } from "expo-linear-gradient"
+import { FontAwesome, Ionicons } from '@expo/vector-icons'; 
 
 import SingIn from "../pages/SignIn"
 import Register from "../pages/Register";
@@ -47,12 +48,14 @@ function HomeTab() {
                 borderTopEndRadius: 20,
                 borderTopStartRadius: 20,
                 borderTopWidth: 0,
+                height: 90,
+                
 
             }
         }}
         >
 
-            {footerObjects.map(({ name, route }, key) => (
+            {footerObjects.map(({ name, route,icon,iconD }, key) => (
                 <Tab.Screen key={key}
                     name={name}
                     component={Home}
@@ -60,10 +63,9 @@ function HomeTab() {
                         headerShown: false,
                         tabBarIcon: ({focused })  => {
                             if(focused){
-                              return  
+                              return icon
                             }
-                            
-
+                            return iconD
                         }
                     }} />
             ))}
